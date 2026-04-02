@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+:root {
+  /* Brand Colors - Civic Horizon */
+  --primary: #00003C;
+  --primary-rgb: 0, 0, 60;
+  --secondary: #574fbe;
+  --secondary-rgb: 87, 79, 190;
+  --tertiary: #6dd4ed;
+  --tertiary-rgb: 109, 212, 237;
+  
+  /* Neutral Palette */
+  --background: #fbf8ff;
+  --surface: #ffffff;
+  --text-main: #191b26;
+  --text-muted: #46464e;
+  
+  /* Decorative */
+  --glass-bg: rgba(251, 248, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 60, 0.05);
+  --shadow-md: 0 12px 32px rgba(0, 0, 60, 0.08);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 60, 0.12);
+  
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 2.5rem;
+  --radius-full: 9999px;
+
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+}
+
+[data-theme='dark'] {
+  --background: #0b0d17;
+  --surface: #141724;
+  --text-main: #fbf8ff;
+  --text-muted: #a0a0b0;
+  --glass-bg: rgba(11, 13, 23, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-main);
+  background: var(--background);
+  color: var(--text-main);
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Base Components */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 8rem 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 1.125rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.radial-glow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle at center, rgba(var(--secondary-rgb), 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Typography Utilities */
+.display-lg {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.headline-lg {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.body-lg {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.z-10 {
+  z-index: 10;
+}
