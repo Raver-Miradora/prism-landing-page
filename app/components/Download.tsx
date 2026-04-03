@@ -9,20 +9,20 @@ const apks = [
   { 
     arch: 'arm64-v8a', 
     label: 'Modern Android Phones', 
-    size: '33.02 MB', 
-    sha: 'e82f3edee3c3616eb3338e88e9e54b577fd8c624'
+    size: '33.05 MB', 
+    sha: 'fa5373d956d8a37a384c3d5e15f2ac9d2de6b4b3'
   },
   { 
     arch: 'armeabi-v7a', 
     label: 'Older 32-bit Devices', 
-    size: '30.78 MB', 
-    sha: '9d9a1a52231f7a738199e2fa21a095395970b705'
+    size: '30.83 MB', 
+    sha: 'ef8358d00d93c4d9aa272fb2eca4d46f49d6ed1a'
   },
   { 
     arch: 'x86_64', 
     label: 'Emulators & Tablets', 
-    size: '34.33 MB', 
-    sha: '484a79b776a366eab8ed08bc69e27c9fa16453f9'
+    size: '34.48 MB', 
+    sha: '52ad1089d4f188542b2750c8955fba9a3be0decc'
   }
 ];
 
