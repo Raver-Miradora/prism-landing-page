@@ -17,7 +17,9 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
       </head>
       <body className="antialiased">
-        {children}
+        <div style={{ overflowX: 'hidden', position: 'relative', width: '100%', maxWidth: '100%', minHeight: '100vh' }}>
+          {children}
+        </div>
       </body>
     </html>
   );
