@@ -88,26 +88,6 @@ export default function Features() {
                 height: '100%'
               }}
             >
-              <div style={{ 
-                width: '64px', 
-                height: '64px', 
-                borderRadius: 'var(--radius-md)', 
-                background: `rgba(${f.color === 'var(--secondary)' ? 'var(--secondary-rgb)' : f.color === 'var(--tertiary)' ? 'var(--tertiary-rgb)' : 'var(--primary-rgb)'}, 0.1)`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '2.5rem',
-                position: 'relative',
-                zIndex: 2
-              }}>
-                <span className="material-symbols-outlined" style={{ 
-                  fontSize: '2.25rem', 
-                  color: f.color,
-                  fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48"
-                }}>
-                  {f.icon}
-                </span>
-              </div>
 
               <h3 style={{ 
                 fontSize: '1.625rem', 

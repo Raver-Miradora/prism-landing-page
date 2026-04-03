@@ -7,12 +7,35 @@ import Footer from '../components/Footer';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    // Simulate API call
-    setTimeout(() => setSubmitted(false), 5000);
+    setLoading(true);
+    setError('');
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/mykbnery', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        setError('Something went wrong. Please try again or email us directly.');
+      }
+    } catch {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -59,7 +82,8 @@ export default function ContactPage() {
                   <label htmlFor="name" style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--primary)' }}>Name</label>
                   <input 
                     type="text" 
-                    id="name" 
+                    id="name"
+                    name="name"
                     placeholder="Your Full Name"
                     required
                     style={{ 
@@ -76,7 +100,8 @@ export default function ContactPage() {
                   <label htmlFor="email" style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--primary)' }}>Email</label>
                   <input 
                     type="email" 
-                    id="email" 
+                    id="email"
+                    name="email"
                     placeholder="example@gmail.com"
                     required
                     style={{ 
@@ -92,7 +117,8 @@ export default function ContactPage() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <label htmlFor="message" style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--primary)' }}>Message</label>
                   <textarea 
-                    id="message" 
+                    id="message"
+                    name="message"
                     rows={5}
                     placeholder="How can we help you?"
                     required
@@ -107,9 +133,13 @@ export default function ContactPage() {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
-                  Send Message
-                  <span className="material-symbols-outlined">send</span>
+                {error && (
+                  <p style={{ color: '#ef4444', fontSize: '0.875rem', marginTop: '-0.5rem' }}>{error}</p>
+                )}
+
+                <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }} disabled={loading}>
+                  {loading ? 'Sending…' : 'Send Message'}
+                  <span className="material-symbols-outlined">{loading ? 'hourglass_top' : 'send'}</span>
                 </button>
               </form>
             )}
@@ -131,7 +161,7 @@ export default function ContactPage() {
               <span className="material-symbols-outlined">mail</span>
               Email
             </a>
-            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, color: 'var(--secondary)' }}>
+            <a href="https://www.facebook.com/ra.ve.52687506/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, color: 'var(--secondary)' }}>
               <span className="material-symbols-outlined">public</span>
               Facebook
             </a>

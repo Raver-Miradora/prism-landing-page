@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const apks = [
   { 
@@ -30,8 +32,9 @@ export default function Download() {
       <div className="radial-glow" style={{ top: '0', left: '0', background: 'radial-gradient(circle at center, rgba(var(--tertiary-rgb), 0.15) 0%, transparent 70%)' }}></div>
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '5rem', alignItems: 'center' }}>
+        <div className="download-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '5rem', alignItems: 'center' }}>
           
+          {/* Left column: text, APK list, and button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,30 +72,64 @@ export default function Download() {
                 </motion.a>
               ))}
             </div>
+
+            {/* View Installation Guide button below the APK list */}
+            <motion.div
+              style={{ marginTop: '2rem' }}
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            >
+              <Link
+                href="/docs"
+                className="btn"
+                style={{ 
+                  background: '#fff', 
+                  color: 'var(--primary)', 
+                  display: 'inline-flex',
+                  justifyContent: 'center',
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  padding: '0.9rem 2.5rem',
+                  boxShadow: '0 4px 24px rgba(255,255,255,0.15)',
+                  transition: 'box-shadow 0.3s ease'
+                }}
+              >
+                View Installation Guide
+              </Link>
+            </motion.div>
           </motion.div>
 
+          {/* Right column: 3 device mockup image with floating animation */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
             style={{ 
-              background: 'rgba(255, 255, 255, 0.03)', 
-              borderRadius: 'var(--radius-lg)', 
-              padding: '4rem',
-              border: '1px solid rgba(255, 255, 255, 0.05)',
-              textAlign: 'center'
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}
           >
-            <div style={{ marginBottom: '2rem' }}>
-               <span className="material-symbols-outlined" style={{ fontSize: '4rem', color: 'var(--tertiary)', marginBottom: '1.5rem' }}>verified_user</span>
-               <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem' }}>Trusted & Secure</h3>
-               <p style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.6)', lineHeight: '1.6' }}>
-                 Every build is signed and verified for official deployment use. Use the SHA1 hashes to verify integrity after download.
-               </p>
-            </div>
-            <div className="btn btn-primary" style={{ background: '#fff', color: 'var(--primary)', width: '100%', justifyContent: 'center' }}>
-              View Installation Guide
-            </div>
+            <motion.div
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <Image
+                src="/3 device mockup.png"
+                alt="PRISM on multiple devices"
+                width={700}
+                height={540}
+                style={{ 
+                  width: '120%',
+                  maxWidth: '700px',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 32px 64px rgba(0,0,0,0.5))'
+                }}
+              />
+            </motion.div>
           </motion.div>
 
         </div>
@@ -101,9 +138,14 @@ export default function Download() {
 
       <style jsx>{`
         @media (max-width: 1024px) {
-          div[style*="gridTemplateColumns"] {
+          .download-grid {
             grid-template-columns: 1fr !important;
-            gap: 4rem !important;
+            gap: 3rem !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .headline-lg {
+            font-size: 2rem !important;
           }
         }
       `}</style>
