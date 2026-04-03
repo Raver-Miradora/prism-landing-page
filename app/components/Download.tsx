@@ -122,7 +122,7 @@ export default function Download() {
                 width={700}
                 height={540}
                 style={{ 
-                  width: '120%',
+                  width: '100%',
                   maxWidth: '700px',
                   height: 'auto',
                   objectFit: 'contain',
