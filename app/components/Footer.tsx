@@ -9,12 +9,7 @@ export default function Footer() {
     <footer style={{ padding: '6rem 0 3rem', background: 'var(--background)', borderTop: '1px solid rgba(var(--primary-rgb), 0.05)' }}>
       <div className="container">
         
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1.5fr repeat(3, 1fr)', 
-          gap: '4rem',
-          marginBottom: '5rem'
-        }}>
+        <div className="footer-grid">
           
           <div style={{ maxWidth: '300px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
@@ -56,30 +51,37 @@ export default function Footer() {
 
         </div>
 
-        <div style={{ 
-          borderTop: '1px solid rgba(var(--primary-rgb), 0.05)', 
-          paddingTop: '2rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          fontSize: '0.75rem',
-          fontWeight: 600,
-          color: 'var(--text-muted)',
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em'
-        }}>
+        <div className="footer-bottom">
           <span>© 2026 PRISM. All rights reserved.</span>
         </div>
 
       </div>
 
       <style jsx>{`
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1.5fr repeat(3, 1fr);
+          gap: 4rem;
+          margin-bottom: 5rem;
+        }
+        .footer-bottom {
+          border-top: 1px solid rgba(var(--primary-rgb), 0.05);
+          padding-top: 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--text-muted);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
         @media (max-width: 768px) {
-          div[style*="gridTemplateColumns"] {
-            grid-template-columns: 1fr !important;
-            gap: 3rem !important;
+          .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
           }
-          div[style*="justifyContent: space-between"] {
+          .footer-bottom {
             flex-direction: column;
             gap: 1rem;
             text-align: center;

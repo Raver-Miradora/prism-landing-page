@@ -2,25 +2,29 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const features = [
   {
     icon: 'location_on',
     title: 'Offline Geofencing',
     description: 'Maintain precise location logs even in remote areas without internet access. Syncs automatically when back online.',
-    color: 'var(--secondary)'
+    color: 'var(--secondary)',
+    href: '/features/geofencing'
   },
   {
     icon: 'auto_awesome',
     title: 'AI Document Polish',
     description: 'Refine your activity journals into professional, submission-ready reports in seconds with our intelligent prose assistant.',
-    color: 'var(--tertiary)'
+    color: 'var(--tertiary)',
+    href: '/features/ai-polish'
   },
   {
     icon: 'description',
     title: 'CSC Form 48 Export',
     description: 'Generate standardized Daily Time Records with compliant formatting and a clean audit trail, ready for submission.',
-    color: 'var(--primary)'
+    color: 'var(--primary)',
+    href: '/features/csc-export'
   }
 ];
 
@@ -110,20 +114,22 @@ export default function Features() {
                 {f.description}
               </p>
               
-              <div style={{ 
-                marginTop: 'auto',
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '0.75rem', 
-                color: 'var(--secondary)', 
-                fontWeight: 800, 
-                fontSize: '0.875rem',
-                letterSpacing: '0.05em',
-                cursor: 'pointer'
-              }}>
-                LEARN MORE 
-                <span className="material-symbols-outlined" style={{ fontSize: '1.25rem' }}>arrow_forward</span>
-              </div>
+              <Link href={f.href} style={{ textDecoration: 'none' }}>
+                <div style={{ 
+                  marginTop: 'auto',
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '0.75rem', 
+                  color: 'var(--secondary)', 
+                  fontWeight: 800, 
+                  fontSize: '0.875rem',
+                  letterSpacing: '0.05em',
+                  cursor: 'pointer'
+                }}>
+                  LEARN MORE 
+                  <span className="material-symbols-outlined" style={{ fontSize: '1.25rem' }}>arrow_forward</span>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>
