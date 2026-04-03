@@ -62,7 +62,7 @@ export default function Features() {
             transition={{ delay: 0.1 }}
             className="headline-lg" 
           >
-            Built for OJT's, work immersionees, GIP's.
+            Built for OJT's, SPES, Immersionees, and DOLE GIP.
           </motion.h2>
         </div>
 
