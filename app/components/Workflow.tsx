@@ -31,7 +31,7 @@ export default function Workflow() {
   return (
     <>
       <section id="workflow" className="section" style={{ background: 'var(--background)' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '6rem', alignItems: 'center' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '6rem', alignItems: 'center' }}>
           
           <motion.div
              initial={{ opacity: 0, x: -20 }}
